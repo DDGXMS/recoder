@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-autowire="byName" default-lazy-init="true">
+
+    <aop:config proxy-target-class="true"/>
+
+    <bean id="dataSource_recoder" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${recoder.jdbc.driver}"/>
+        <property name="url" value="${recoder.jdbc.url}"/>
+        <property name="username" value="${recoder.jdbc.username}"/>
+        <property name="password" value="${$recoder.jdbc.password}"/>
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="${recoder.jdbc.initialSize}"/>
+        <!-- 连接池最大使用连接数量 -->
+        <property name="maxActive" value="${recoder.jdbc.maxTotal}"/>
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle" value="${recoder.jdbc.maxIdle}"/>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="${recoder.jdbc.minIdle}"/>
+        <property name="validationQuery" value="SELECT 1"/>
+        <property name="testOnBorrow" value="true"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="testWhileIdle" value="true"/>
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="30000"/>
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="numTestsPerEvictionRun" value="300"/>
+        <property name="defaultAutoCommit" value="true"/>
+    </bean>
+
+    <!-- 配置事务 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+          p:dataSource-ref="dataSource_recoder"/>
+
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+    <!-- 配置sqlSessionFactory -->
+    <bean id="recoderSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 实例化sqlSessionFactory时需要使用上述配置好的数据源以及SQL映射文件 -->
+        <property name="dataSource" ref="dataSource_recoder" />
+        <property name="configLocation" value="classpath:mybatis-config.xml" />
+        <!-- 自动扫描sqlmap/目录下的所有SQL映射的xml文件, 省掉Configuration.xml里的手工配置 -->
+        <property name="mapperLocations" value="classpath:sqlmap/*.xml" />
+        <!-- 自动取对应包中不包括包名的简单类名作为包括包名的别名 -->
+        <property name="typeAliasesPackage" value="org.msdg.recoder.model" />
+    </bean>
+    <!-- 配置扫描器 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 扫描com.dooioo.mobile.**.dao这个包以及它的子包下的所有映射接口类 -->
+        <property name="basePackage" value="org.msdg.recoder.dao" />
+        <property name="sqlSessionFactoryBeanName" value="recoderSqlSessionFactory" />
+    </bean>
+
+    <!--JdbcTemplate-->
+    <bean id="springJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" lazy-init="true" autowire="byName">
+        <property name="dataSource">
+            <ref bean="dataSource_recoder" />
+        </property>
+    </bean>
+
+</beans>
