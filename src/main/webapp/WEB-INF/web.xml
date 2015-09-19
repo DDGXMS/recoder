@@ -75,6 +75,6 @@
 
     <mime-mapping>
         <extension>ico</extension>
-        <mime-type>/static/image/m.ico</mime-type>
+        <mime-type>/image/m.ico</mime-type>
     </mime-mapping>
 </web-app>
