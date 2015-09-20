@@ -6,7 +6,7 @@ userApp.controller('UserController', function($scope, $http) {
 
     $scope.login = function() {
         var param = {password:$scope.user.password};
-        $http.post('/user/' + $scope.user.userName + '/login', $.param(param))
+        $http.post('/user/' + $scope.user.userName + '/login', param)
             .success(function(data) {
                 alert(data.userName);
             })

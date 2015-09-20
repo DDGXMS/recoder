@@ -42,7 +42,9 @@
         <script src="/static/js/jquery-1.11.3.js"></script>
         <script src="/static/js/bootstrap.js"></script>
         <script src="/static/js/angular.js"></script>
-        <script src="/static/js/user/userApp.js"></script>
-        <script src="/static/js/user/controller/userController.js"></script>
+        <script src="/static/js/httpConfig.js"></script>
+
+        <script src="/static/front/user/userApp.js"></script>
+        <script src="/static/front/user/controller/userController.js"></script>
     </body>
 </html>
