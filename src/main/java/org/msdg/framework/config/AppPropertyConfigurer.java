@@ -43,4 +43,6 @@ public class AppPropertyConfigurer extends PropertyPlaceholderConfigurer {
         LOGGER.info(">>>>> 执行脚本：" + ResourceMap.isJobRun());
         return superProps;
     }
+
+
 }

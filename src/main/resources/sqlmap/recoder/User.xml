@@ -8,7 +8,7 @@
     </select>
 
     <update id="updateLoginTime" parameterType="int">
-        update uesr set loginTime = now() where id = #{value}
+        update user set loginTime = now() where id = #{value}
     </update>
 
 

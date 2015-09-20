@@ -2,6 +2,7 @@ package org.msdg.recoder.service;
 
 import org.apache.tomcat.util.security.MD5Encoder;
 import org.msdg.framework.exception.ExceptionHandle;
+import org.msdg.framework.util.MD5Util;
 import org.msdg.framework.word.UserWord;
 import org.msdg.recoder.dao.UserDao;
 import org.msdg.recoder.model.User;
@@ -23,7 +24,7 @@ public class UserService {
     }
 
     public User login(String userName, String password) {
-        String encryptPwd = MD5Encoder.encode(password.getBytes());
+        String encryptPwd = MD5Util.MD5(password);
 
         User user = this.getUser(userName);
         if (null == user) {

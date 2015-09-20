@@ -15,7 +15,7 @@
         <property name="driverClassName" value="${recoder.jdbc.driver}"/>
         <property name="url" value="${recoder.jdbc.url}"/>
         <property name="username" value="${recoder.jdbc.username}"/>
-        <property name="password" value="${$recoder.jdbc.password}"/>
+        <property name="password" value="${recoder.jdbc.password}"/>
         <!-- 初始化连接大小 -->
         <property name="initialSize" value="${recoder.jdbc.initialSize}"/>
         <!-- 连接池最大使用连接数量 -->
@@ -47,7 +47,7 @@
         <property name="dataSource" ref="dataSource_recoder" />
         <property name="configLocation" value="classpath:mybatis-config.xml" />
         <!-- 自动扫描sqlmap/目录下的所有SQL映射的xml文件, 省掉Configuration.xml里的手工配置 -->
-        <property name="mapperLocations" value="classpath:sqlmap/*.xml" />
+        <property name="mapperLocations" value="classpath:sqlmap/**/*.xml" />
         <!-- 自动取对应包中不包括包名的简单类名作为包括包名的别名 -->
         <property name="typeAliasesPackage" value="org.msdg.recoder.model" />
     </bean>
