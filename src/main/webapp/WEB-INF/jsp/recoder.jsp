@@ -40,7 +40,7 @@
                             <div class="panel-heading">
                                 <h4 class="panel-title">查看交易管家短信发送情况</h4>
                             </div>
-                            <div class="panel-body" style="min-height:200px">
+                            <div class="panel-body">
                                 SELECT
                                 COUNT(1) total,
                                 SUM(CASE WHEN commitStatus=1 THEN 1 ELSE 0 END) succ,
@@ -63,7 +63,7 @@
                             <div class="panel-heading">
                                 <h4 class="panel-title">一些问题</h4>
                             </div>
-                            <div class="panel-body" style="height:200px">
+                            <div class="panel-body">
                                 如何让任意错误链接跳转到指定页面，比如登陆界面？
                                 可不可以做一个项目末班的工具，可以快速搭建web项目？
                             </div>
@@ -115,7 +115,7 @@
                             <div class="panel-heading">
                                 <h4 class="panel-title">Linux 常用命令</h4>
                             </div>
-                            <div class="panel-body" style="height:200px">
+                            <div class="panel-body">
 
                                 * mv
                                 *
@@ -148,7 +148,7 @@
                                 <h4 class="panel-title">我是个普通的标题</h4>
 
                             </div>
-                            <div class="panel-body" style="height:200px">
+                            <div class="panel-body">
                                 SELECT
                                 COUNT(1) total,
                                 SUM(CASE WHEN commitStatus=1 THEN 1 ELSE 0 END) succ,

@@ -10,6 +10,4 @@
     <update id="updateLoginTime" parameterType="int">
         update user set loginTime = now() where id = #{value}
     </update>
-
-
 </mapper>

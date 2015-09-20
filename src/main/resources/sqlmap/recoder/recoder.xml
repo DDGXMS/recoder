@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.msdg.recoder.dao.RecoderDao">
+    <select id="getRecoderPage" parameterType="hashMap" resultType="Recoder">
+        SELECT
+          id,
+          title,
+          content,
+          recoderType,
+          tags,
+          creator,
+          createTime,
+          lastModifyTime,
+          flagDelete
+        FROM recoder
+        WHERE falgDelete = 0 AND creator = #{creator}
+        <if test="recoderType != null">
+            AND recoderType = #{recoderType}
+        </if>
+        <if test="tags != null">
+            <foreach collection="tags" index="index" item="tag" open="AND">
+                LOCATE(#{tag},tags)
+            </foreach>
+        </if>
+        <if test="keyword != null">
+            AND (
+              title LIKE '%' + #{keyword} + '%'
+              OR
+              content LIKE '%' + #{keyword} + '%'
+            )
+        </if>
+        ORDER BY lastModifyTime
+        LIMIT (#{pageNo}-1) * #{pageSize}, #{pageSize}
+    </select>
+
+    <insert id="addRecoder" useGeneratedKeys="true" keyProperty="id" parameterType="hashMap">
+        INSERT INTO recoder(title, content, recoderType, tags, creator, createTime, lastModifyTime)
+        VALUES (#{title}, #{content}, #{recoderType}, #{tags}, #{creator}, NOW(), NOW())
+    </insert>
+
+    <update id="updateRecoder" parameterType="hashMap">
+        UPDATE recoder
+        SET
+          1 = 1
+        <if test="title != null">
+           , title = #{title}
+        </if>
+        <if test="content != null">
+            , content = #{content}
+        </if>
+        <if test="recoderType != null">
+            , recoderType = #{recoderType}
+        </if>
+        <if test="tags != null">
+            , tags = #{tags}
+        </if>
+        WHERE id = #{id}
+    </update>
+
+    <update id="deleteRecoder" parameterType="int">
+      UPDATE recoder
+      SET flagDelete = 1
+      WHERE id = #{value}
+    </update>
+</mapper>
