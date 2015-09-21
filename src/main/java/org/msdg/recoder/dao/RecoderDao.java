@@ -1,6 +1,7 @@
 package org.msdg.recoder.dao;
 
 import org.msdg.recoder.model.Recoder;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 2015/9/21.
  */
+@Repository
 public interface RecoderDao {
 
     /**
@@ -21,7 +23,7 @@ public interface RecoderDao {
      *                  recoderType 所属分类
      * @return          符合信息的recoder列表，按最近修改时间倒序
      */
-    List<Recoder> getRecoderPage(Map<String, String> parmas);
+    List<Recoder> getRecoderPage(Map<String, Object> parmas);
 
     void addRecoder(Recoder recoder);
 

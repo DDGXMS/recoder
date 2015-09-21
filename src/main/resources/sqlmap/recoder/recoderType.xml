@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.msdg.recoder.dao.RecoderTypeDao">
+    <select id="getAllRecoderType" resultType="RecoderType">
+        SELECT
+          id,
+          typeName,
+          className,
+          creator,
+          createTime
+        FROM recoder_type
+        WHERE creator = #{value} AND deleteFlag = 0
+    </select>
+
+    <select id="getRecoderType" parameterType="int" resultType="RecoderType">
+        SELECT
+          id,
+          typeName,
+          className,
+          creator,
+          createTime
+        FROM recoder_type
+        WHERE id = #{value}
+    </select>
+
+    <insert id="addRecoderType" useGeneratedKeys="true" keyProperty="id" parameterType="RecoderType">
+        INSERT INTO recoder_type(typeName, className, creator, createTime)
+        VALUES (#{typeName}, #{className}, #{creator}, NOW())
+    </insert>
+
+    <update id="updateRecoderType" parameterType="RecoderType">
+        UPDATE recoder_type
+        SET
+        1 = 1
+        <if test="typeName != null">
+            , typeName = #{typeName}
+        </if>
+        <if test="className != null">
+            , className = #{className}
+        </if>
+        WHERE id = #{id}
+    </update>
+
+    <update id="deleteRecoderType" parameterType="int">
+        UPDATE recoder_type
+        SET deleteFlag = 1
+        WHERE id = #{value}
+    </update>
+</mapper>

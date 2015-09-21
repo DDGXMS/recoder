@@ -8,7 +8,7 @@ userApp.controller('UserController', function($scope, $http) {
         var param = {password:$scope.user.password};
         $http.post('/user/' + $scope.user.userName + '/login', param)
             .success(function(data) {
-                alert(data.userName);
+                window.location.href = "/recoder";
             })
             .error(function(data) {
                 alert(data.message);
