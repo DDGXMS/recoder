@@ -12,6 +12,7 @@ public class RecoderTag {
     private String className;
     private int creator;
     private Date createTime;
+    private int deleteFlag;
 
     public int getId() {
         return id;
@@ -51,5 +52,13 @@ public class RecoderTag {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public int getDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(int deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 }

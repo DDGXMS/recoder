@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : localhost
 Source Server Version : 50145
 Source Host           : localhost:3306
 Source Database       : recoder
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50145
 File Encoding         : 65001
 
-Date: 2015-09-21 00:54:43
+Date: 2015-09-21 18:22:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `recoder` (
   `creator` int(11) NOT NULL,
   `createTime` datetime NOT NULL,
   `lastModifyTime` datetime NOT NULL,
-  `flagDelete` int(11) DEFAULT '0',
+  `deleteFlag` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
@@ -46,6 +46,7 @@ CREATE TABLE `recoder_tag` (
   `className` varchar(40) NOT NULL,
   `creator` int(11) NOT NULL,
   `createTime` datetime NOT NULL,
+  `deleteFlag` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -63,6 +64,7 @@ CREATE TABLE `recoder_type` (
   `className` varchar(40) NOT NULL,
   `creator` int(11) NOT NULL,
   `createTime` datetime NOT NULL,
+  `deleteFlag` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

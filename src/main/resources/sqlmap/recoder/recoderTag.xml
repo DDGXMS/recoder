@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.msdg.recoder.dao.RecoderTagDao">
+    <select id="getRecoderTag" parameterType="int" resultType="RecoderTag">
+        SELECT
+          id,
+          tagName,
+          classname,
+          creator,
+          createTime,
+        FROM recoder_tag
+        WHERE id = #{value}
+    </select>
+
+    <insert id="addRecoderTag" useGeneratedKeys="true" keyProperty="id" parameterType="hashMap">
+        INSERT INTO recoder_tag(tagName, className, creator, createTime)
+        VALUES (#{tagName}, #{className}, #{creator}, NOW())
+    </insert>
+
+    <update id="updateRecoderTag" parameterType="hashMap">
+        UPDATE recoder_tag
+        SET
+        1 = 1
+        <if test="tagName != null">
+            , tagName = #{tagName}
+        </if>
+        <if test="className != null">
+            , className = #{className}
+        </if>
+        WHERE id = #{id}
+    </update>
+
+    <update id="deleteRecoder" parameterType="int">
+        UPDATE recoder_tag
+        SET deleteFlag = 1
+        WHERE id = #{value}
+    </update>
+</mapper>

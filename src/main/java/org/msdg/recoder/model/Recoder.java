@@ -15,7 +15,7 @@ public class Recoder {
     private int creator;
     private Date createTime;
     private Date lastModifyTime;
-    private int flagDelete;
+    private int deleteFlag;
 
     public int getId() {
         return id;
@@ -81,11 +81,11 @@ public class Recoder {
         this.lastModifyTime = lastModifyTime;
     }
 
-    public int getFlagDelete() {
-        return flagDelete;
+    public int getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setFlagDelete(int flagDelete) {
-        this.flagDelete = flagDelete;
+    public void setDeleteFlag(int deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 }

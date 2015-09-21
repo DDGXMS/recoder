@@ -13,9 +13,9 @@
           creator,
           createTime,
           lastModifyTime,
-          flagDelete
+          deleteFlag
         FROM recoder
-        WHERE falgDelete = 0 AND creator = #{creator}
+        WHERE deleteFlag = 0 AND creator = #{creator}
         <if test="recoderType != null">
             AND recoderType = #{recoderType}
         </if>
@@ -61,7 +61,7 @@
 
     <update id="deleteRecoder" parameterType="int">
       UPDATE recoder
-      SET flagDelete = 1
+      SET deleteFlag = 1
       WHERE id = #{value}
     </update>
 </mapper>
