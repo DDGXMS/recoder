@@ -2,9 +2,7 @@ package org.msdg.recoder.controller;
 
 import org.msdg.framework.controller.BaseController;
 import org.msdg.recoder.model.RecoderTag;
-import org.msdg.recoder.model.RecoderType;
 import org.msdg.recoder.service.RecoderTagService;
-import org.msdg.recoder.service.RecoderTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

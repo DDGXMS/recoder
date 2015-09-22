@@ -1,7 +1,6 @@
 package org.msdg.recoder.dao;
 
 import org.msdg.recoder.model.RecoderTag;
-import org.msdg.recoder.model.RecoderType;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

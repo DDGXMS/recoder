@@ -1,6 +1,5 @@
 package org.msdg.recoder.service;
 
-import org.apache.tomcat.util.security.MD5Encoder;
 import org.msdg.framework.exception.ExceptionHandle;
 import org.msdg.framework.util.MD5Util;
 import org.msdg.framework.word.UserWord;
@@ -8,7 +7,6 @@ import org.msdg.recoder.dao.UserDao;
 import org.msdg.recoder.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.security.provider.MD5;
 
 /**
  * Created by Administrator on 2015/9/12.
