@@ -1,5 +1,6 @@
 recoderApp.controller('RecoderController', function($scope, $http) {
 
+    $scope.curTab = 'recoder';
     $scope.recoderList = new Array();
     $scope.tagMap = {};
     $scope.typeMap = {};
@@ -46,6 +47,14 @@ recoderApp.controller('RecoderController', function($scope, $http) {
                     data[index]["tagList"] = data[index].tags.split(',');
                 }
                 $scope.recoderList = $scope.recoderList.concat(data);
+
+                var $container = $('.masonry-container');
+                $container.imagesLoaded( function () {
+                    $container.masonry({
+                        columnWidth: '.item',
+                        itemSelector: '.item'
+                    });
+                });
             })
             .error(function(data) {
                 alert(data.message);
