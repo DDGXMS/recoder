@@ -9,3 +9,7 @@ recoderApp.config(function($routeProvider, $locationProvider) {
         .when('/tag', {templateUrl:'/front/tag/view/tag.html', controller:'TagController'})
         .otherwise({redirectTo:'/recoder'});
 });
+
+recoderApp.run(function($rootScope) {
+    $rootScope.curTab = 'recoder';
+});

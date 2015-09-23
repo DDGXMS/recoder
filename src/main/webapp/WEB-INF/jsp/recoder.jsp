@@ -27,7 +27,7 @@
             }
         </style>
     </head>
-    <body ng-controller="RecoderController" ng-cloak>
+    <body ng-cloak>
         <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
             <div class="container">
                 <div class="navbar-header">

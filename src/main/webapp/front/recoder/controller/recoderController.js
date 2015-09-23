@@ -1,6 +1,6 @@
-recoderApp.controller('RecoderController', function($scope, $http) {
+recoderApp.controller('RecoderController', function($rootScope, $scope, $http) {
 
-    $scope.curTab = 'recoder';
+    $rootScope.curTab = 'recoder';
     $scope.recoderList = new Array();
     $scope.tagMap = {};
     $scope.typeMap = {};
