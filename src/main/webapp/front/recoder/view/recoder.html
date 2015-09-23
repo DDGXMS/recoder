@@ -1,41 +1,60 @@
-
-
-
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="搜索...">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="搜索...">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button">查询</button>
                 </span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <h3>嘿，你想要的...</h3>
-        </div>
-    </div>
-    <div class="row masonry-container">
-        <div class="col-md-3 item" ng-repeat="recoder in recoderList">
-            <div class="panel" ng-class="typeMap[recoder.recoderType].className">
-                <div class="panel-heading">
-                    <h4 class="panel-title">{{recoder.title}}</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>嘿，碎片...</h3>
                 </div>
-                <div class="panel-body" style="overflow: hidden;">
-                    {{recoder.content}}
-                </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label>{{recoder.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</label>
+            </div>
+            <div class="row masonry-container">
+                <div class="col-md-3 item" ng-repeat="recoder in recoderList">
+                    <div class="panel" ng-class="typeMap[recoder.recoderType].className">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">{{recoder.title}}</h4>
+                        </div>
+                        <div class="panel-body" style="overflow: hidden;">
+                            {{recoder.content}}
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>{{recoder.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</label>
+                                </div>
+                            </div>
+                            <span class="mr5 label" ng-class="tagMap[tagId].className" ng-repeat="tagId in recoder.tagList">{{tagMap[tagId].tagName}}</span>
                         </div>
                     </div>
-                    <span class="mr5 label" ng-class="tagMap[tagId].className" ng-repeat="tagId in recoder.tagList">{{tagMap[tagId].tagName}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Basic panel example
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Basic panel example
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Basic panel example
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 
