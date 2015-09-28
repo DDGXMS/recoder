@@ -34,7 +34,7 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http) {
 
     $scope.query = {
         pageNo : 1,
-        keyword : null,
+        keyword : 'asdfsa',
         type : null,
         tags : null,
         creator : loginUser.id
