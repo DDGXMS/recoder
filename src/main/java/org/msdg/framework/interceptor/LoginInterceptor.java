@@ -20,7 +20,9 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         if (request.getSession().getAttribute(Constants.SESSION_USER) == null) {
             response.sendRedirect("/user");
+            return false;
         }
+
         return true;
     }
 

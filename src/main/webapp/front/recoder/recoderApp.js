@@ -5,6 +5,7 @@ recoderApp.config(function($routeProvider, $locationProvider) {
 
     $routeProvider
         .when('/recoder', {templateUrl:'/front/recoder/view/recoder.html', controller:'RecoderController'})
+        .when('/fragment/add', {templateUrl:'/front/recoder/view/fragment-add.html', controller:'FragmentAddController'})
         .when('/type', {templateUrl:'/front/type/view/type.html', controller:'TypeController'})
         .when('/tag', {templateUrl:'/front/tag/view/tag.html', controller:'TagController'})
         .otherwise({redirectTo:'/recoder'});

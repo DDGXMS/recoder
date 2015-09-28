@@ -66,7 +66,6 @@ public abstract class BaseController {
         return new Result(Result.STATUS.FAIL, message);
     }
 
-
     /**
      * 获取用户信息异常
      */

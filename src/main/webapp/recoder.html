@@ -8,25 +8,16 @@
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/summernote.css">
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-        <style>
-            .tag-cloud .btn {
-                margin-bottom: 5px;
-            }
-            .tag-cloud h3 {
-                margin-top: 0;
-            }
-        </style>
+        <link rel="stylesheet" href="css/font-awesome4.0.3.min.css">
+
     </head>
     <body>
         <div class="container">
             <form class="col-md-9">
                 <div class="form-group">
-                    <label for="titelText">标题</label>
                     <input type="text" class="form-control" id="titelText" placeholder="请输入标题">
                 </div>
                 <div class="form-group">
-                    <label for="contentText">内容</label>
                     <div id="summernote">Hello Summernote</div>
                 </div>
                 <button class="btn btn-success" type="button">新增</button>
@@ -79,7 +70,7 @@
                   minHeight: null,             // set minimum height of editor
                   maxHeight: null,             // set maximum height of editor
 
-                  focus: true,                 // set focus to editable area after initializing summernote
+                  focus: true                 // set focus to editable area after initializing summernote
                 });
             });
             

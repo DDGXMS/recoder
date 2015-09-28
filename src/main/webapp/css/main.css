@@ -4,3 +4,7 @@ body {
     background-color: #eee;
     font-family: "微软雅黑";
 }
+
+.tag-cloud .btn {
+    margin-bottom: 5px;
+}

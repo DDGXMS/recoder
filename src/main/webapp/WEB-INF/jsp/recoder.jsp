@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!doctype html>
 <html lang="zh-CN" ng-app="recoderApp">
     <head>
         <meta charset="utf-8">
@@ -15,6 +16,8 @@
         <title>记录者-${session_user.userName}</title>
         <link rel="stylesheet" href="/static/css/bootstrap.css">
         <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/css/summernote.css">
+        <link rel="stylesheet" href="/static/css/font-awesome4.0.3.min.css">
         <script>
             var loginUser = {id:'${session_user.id}', userName:'${session_user.userName}'}
         </script>
