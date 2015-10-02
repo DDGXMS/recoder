@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="../../image/m.ico">
         <title>欢迎 - XX</title>
-        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <link rel="stylesheet" href="/static/css/bootstrap.paper.min.css">
         <link rel="stylesheet" href="/static/css/main.css">
         <style>
             .form-signin {
@@ -39,9 +39,9 @@
             <button class="btn btn-primary btn-block btn-lg" type="button" ng-click="login()">登 录</button>
         </form>
 
-        <script src="/static/js/jquery-1.11.3.js"></script>
-        <script src="/static/js/bootstrap.js"></script>
-        <script src="/static/js/angular.js"></script>
+        <script src="/static/js/jquery-1.11.3.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/angular.min.js"></script>
         <script src="/static/js/httpConfig.js"></script>
 
         <script src="/static/front/user/userApp.js"></script>

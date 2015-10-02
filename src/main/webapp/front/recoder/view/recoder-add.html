@@ -1,0 +1,62 @@
+<style>
+    .h3 {
+        margin-top:0px;
+    }
+</style>
+<div class="container">
+    <form class="col-md-9">
+        <div class="form-group">
+            <input type="text" class="form-control" id="titelText" placeholder="请输入标题" ng-model="recoder.title">
+        </div>
+        <div class="form-group">
+            <div id="summernote"></div>
+        </div>
+        <button class="btn btn-success" type="button" ng-click="add()">新增</button>
+        <a class="btn btn-default" type="button" href="/recoder">取消</a>
+    </form>
+
+    <div class="col-md-3 tag-cloud">
+        <div class="row">
+            <div class="col-md-12 btn-group" data-toggle="buttons">
+                <h3>分类</h3>
+
+                <label class="type btn" ng-class="'btn-' + type.className" ng-repeat="type in types">
+                    <input type="radio" name="recoder.type" id="{{'type'+type.id}}" autocomplete="off">{{type.typeName}}
+                </label>
+
+                <button type="button" class="new btn btn-default" >
+                    +
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 btn-group" data-toggle="buttons">
+                <h3>标签</h3>
+                <label class="tag btn btn-sm" ng-class="'btn-' + tag.className" ng-repeat="tag in tags">
+                    <input type="checkbox" autocomplete="off"> {{tag.tagName}}
+                </label>
+
+                <button type="button" class="new btn btn-default btn-sm" >
+                    +
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/summernote.min.js"></script>
+<script src="/static/js/summernote-zh-CN.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            lang: 'zh-CN',
+            height: 500,                 // set editor height
+
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+
+            focus: true                 // set focus to editable area after initializing summernote
+        });
+    });
+
+</script>

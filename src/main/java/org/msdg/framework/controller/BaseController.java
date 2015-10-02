@@ -1,5 +1,7 @@
 package org.msdg.framework.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.msdg.framework.Constants;
 import org.msdg.framework.controller.param.Result;
 import org.msdg.recoder.exception.UserException;
@@ -18,11 +20,19 @@ import java.util.*;
  * 控制器基类
  */
 public abstract class BaseController {
+    private Logger logger = LogManager.getLogger(BaseController.class);
 
     /**
      * 从session中取登录信息
      */
-    public User getSesionUser(HttpSession session) {
+    public User getSessionUser(HttpServletRequest request) {
+        return getSessionUser(request.getSession(false));
+    }
+
+    /**
+     * 从session中取登录信息
+     */
+    public User getSessionUser(HttpSession session) {
         return (User) session.getAttribute(Constants.SESSION_USER);
     }
 
@@ -84,6 +94,17 @@ public abstract class BaseController {
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public Result userException(UserException ex) {
         return fail(ex.getMessage());
+    }
+
+    /**
+     * 未捕获的异常统一处理
+     */
+    @ResponseBody
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public Result exception(Exception ex) {
+        logger.error(ex);
+        return fail("非常抱歉,系统异常,快找开发 410212983");
     }
 }
 

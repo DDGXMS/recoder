@@ -14,10 +14,10 @@
         <base href="/" />
         <link rel="icon" href="/image/m.ico">
         <title>记录者-${session_user.userName}</title>
-        <link rel="stylesheet" href="/static/css/bootstrap.css">
-        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/css/bootstrap.paper.min.css">
         <link rel="stylesheet" href="/static/css/summernote.css">
         <link rel="stylesheet" href="/static/css/font-awesome4.0.3.min.css">
+        <link rel="stylesheet" href="/static/css/main.css">
         <script>
             var loginUser = {id:'${session_user.id}', userName:'${session_user.userName}'}
         </script>
@@ -31,7 +31,7 @@
         </style>
     </head>
     <body ng-cloak>
-        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
@@ -55,15 +55,18 @@
         <div ng-view>
         </div>
 
-        <script src="/static/js/jquery-1.11.3.js"></script>
-        <script src="/static/js/bootstrap.js"></script>
+        <script src="/static/js/jquery-1.11.3.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
         <script src="/static/js/masonry.js"></script>
         <script src="/static/js/imagesLoaded-v3.1.8.js"></script>
-        <script src="/static/js/angular.js"></script>
-        <script src="/static/js/angular-route.js"></script>
+        <script src="/static/js/angular.min.js"></script>
+        <script src="/static/js/angular-route.min.js"></script>
+        <script src="/static/js/angular-sanitize.min.js"></script>
+        <script src="/static/js/angular-masonry-directive.js"></script>
         <script src="/static/js/httpConfig.js"></script>
 
         <script src="/static/front/recoder/recoderApp.js"></script>
         <script src="/static/front/recoder/controller/recoderController.js"></script>
+        <script src="/static/front/recoder/controller/recoderAddController.js"></script>
     </body>
 </html>

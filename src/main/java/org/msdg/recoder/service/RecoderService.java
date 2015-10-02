@@ -4,10 +4,12 @@ import org.msdg.framework.Constants;
 import org.msdg.framework.syntactic.SugarMap;
 import org.msdg.recoder.dao.RecoderDao;
 import org.msdg.recoder.model.Recoder;
+import org.msdg.recoder.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -32,5 +34,11 @@ public class RecoderService {
             params.put("tags", tagList);
         }
         return recoderDao.getRecoderPage(params);
+    }
+
+    public Recoder add(Recoder recoder, User user) {
+        recoder.setCreator(user.getId());
+        recoderDao.addRecoder(recoder);
+        return recoder;
     }
 }

@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.msdg.recoder.dao.RecoderDao">
     <select id="getRecoderPage" parameterType="hashMap" resultType="Recoder">
+        <bind name="keywordPattern" value="'%' + keyword + '%'" />
         SELECT
           id,
           title,
@@ -24,14 +25,14 @@
                 LOCATE(#{tag},tags)
             </foreach>
         </if>
-        <if test="keyword != null">
+        <if test="keyword != ''">
             AND (
-              title LIKE '%' + #{keyword} + '%'
+              title LIKE #{keywordPattern}
               OR
-              content LIKE '%' + #{keyword} + '%'
+              content LIKE #{keywordPattern}
             )
         </if>
-        ORDER BY lastModifyTime
+        ORDER BY lastModifyTime DESC
         LIMIT #{offset}, #{pageSize}
     </select>
 

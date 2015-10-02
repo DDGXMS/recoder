@@ -2,11 +2,13 @@ package org.msdg.recoder.controller;
 
 import org.msdg.framework.controller.BaseController;
 import org.msdg.recoder.model.Recoder;
+import org.msdg.recoder.model.User;
 import org.msdg.recoder.service.RecoderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -31,5 +33,12 @@ public class RecoderController extends BaseController{
                                      @RequestParam(required = false) String type,
                                      @RequestParam(required = false) String tags) {
         return recoderService.recoderPage(pageNo, creator, keyword, tags, type);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public Recoder add(HttpServletRequest request, @ModelAttribute Recoder recoder) {
+        User user = super.getSessionUser(request);
+        return recoderService.add(recoder, user);
     }
 }

@@ -1,4 +1,4 @@
-recoderApp.controller('RecoderController', function($rootScope, $scope, $http) {
+recoderApp.controller('RecoderController', function($rootScope, $scope, $http, $sce) {
 
     $rootScope.curTab = 'recoder';
     $scope.recoderList = new Array();
@@ -34,25 +34,50 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http) {
 
     $scope.query = {
         pageNo : 1,
-        keyword : 'asdfsa',
+        keyword : '',
         type : null,
         tags : null,
         creator : loginUser.id
     };
 
     $scope.queryData = function() {
-        $http.get("/recoder/"+$scope.query.creator+"/"+$scope.query.pageNo, $scope.query)
+        console.log($scope.query);
+        $http.get("/recoder/"+$scope.query.creator+"/"+$scope.query.pageNo, {params:$scope.query})
             .success(function(data) {
                 for (var index in data) {
-                    data[index]["tagList"] = data[index].tags.split(',');
+                    if (data[index].tags) {
+                        data[index]["tagList"] = data[index].tags.split(',');
+                    }
+                }
+                $scope.recoderList = data;
+                //$scope.recoderList = $scope.recoderList.concat(data);
+
+                $('.masonry-container').imagesLoaded( function () {
+                    $('.masonry-container').masonry({
+                        columnWidth: '.tile',
+                        itemSelector: '.tile'
+                    });
+                });
+            })
+            .error(function(data) {
+                alert(data.message);
+            })
+    }
+
+    $scope.queryData1 = function() {
+        $http.get("/recoder/"+$scope.query.creator+"/"+$scope.query.pageNo, {params:$scope.query})
+            .success(function(data) {
+                for (var index in data) {
+                    if (data[index].tags) {
+                        data[index]["tagList"] = data[index].tags.split(',');
+                    }
                 }
                 $scope.recoderList = $scope.recoderList.concat(data);
 
-                var $container = $('.masonry-container');
-                $container.imagesLoaded( function () {
-                    $container.masonry({
-                        columnWidth: '.item',
-                        itemSelector: '.item'
+                $('.masonry-container').imagesLoaded( function () {
+                    $('.masonry-container').masonry({
+                        columnWidth: '.tile',
+                        itemSelector: '.tile'
                     });
                 });
             })

@@ -6,5 +6,18 @@ body {
 }
 
 .tag-cloud .btn {
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    margin-right: 5px;
+}
+
+.tag-cloud .tag:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+    border-radius: 15px;
+}
+.tag-cloud .new:last-child:not(:first-child){
+    border-radius: 15px;
+}
+
+
+.tag-cloud .type {
+    border-radius: 0;
 }
