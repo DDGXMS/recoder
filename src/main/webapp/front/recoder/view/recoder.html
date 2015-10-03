@@ -18,7 +18,7 @@
             </div>
             <div class="row masonry-container" masonry='{ "transitionDuration" : "0.4s" , "itemSelector" : ".tile"}'>
                 <div class="col-md-3 tile" masonry-tile ng-repeat="recoder in recoderList">
-                    <div class="panel" ng-class="'panel-' + typeMap[recoder.recoderType].className">
+                    <div class="panel panel-{{typeMap[recoder.recoderType].className || 'default'}}">
                         <div class="panel-heading">
                             <h4 class="panel-title">{{recoder.title}}</h4>
                         </div>

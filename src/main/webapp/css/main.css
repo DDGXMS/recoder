@@ -5,6 +5,11 @@ body {
     font-family: "微软雅黑";
 }
 
+.btn {
+    text-transform: none;
+}
+
+/*标签相关样式*/
 .tag-cloud .btn {
     margin-bottom: 6px;
     margin-right: 5px;
@@ -13,10 +18,13 @@ body {
 .tag-cloud .tag:not(:first-child):not(:last-child):not(.dropdown-toggle) {
     border-radius: 15px;
 }
-.tag-cloud .new:last-child:not(:first-child){
+.tag-cloud>.row>.btn-group>.tag:not(:last-child):not(.dropdown-toggle) {
     border-radius: 15px;
 }
 
+.tag-cloud .new:last-child:not(:first-child){
+    border-radius: 4px;
+}
 
 .tag-cloud .type {
     border-radius: 0;

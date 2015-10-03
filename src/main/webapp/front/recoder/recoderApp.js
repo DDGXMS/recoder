@@ -1,4 +1,4 @@
-var recoderApp = angular.module('recoderApp', ['angular.config', 'ngRoute', 'ngSanitize', 'masonry']);
+var recoderApp = angular.module('recoderApp', ['angular.config', 'ngRoute', 'ngSanitize', 'masonry', 'ui.bootstrap']);
 
 recoderApp.config(function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);

@@ -16,29 +16,22 @@
     </form>
 
     <div class="col-md-3 tag-cloud">
-        <div class="row">
-            <div class="col-md-12 btn-group" data-toggle="buttons">
-                <h3>分类</h3>
+        <h3 ng-click="typeShow = !typeShow">分类</h3>
+        <div class="row" collapse="typeShow">
+            <div class="col-md-12 btn-group">
+                <label class="type btn btn-{{type.className || 'default'}}" ng-repeat="type in types"
+                       ng-model="recoder.recoderType" btn-radio="{{type.id}}" ng-bind="type.typeName"></label>
 
-                <label class="type btn" ng-class="'btn-' + type.className" ng-repeat="type in types">
-                    <input type="radio" name="recoder.type" id="{{'type'+type.id}}" autocomplete="off">{{type.typeName}}
-                </label>
-
-                <button type="button" class="new btn btn-default" >
-                    +
-                </button>
+                <button type="button" class="new btn btn-default" ng-click="openType()">+</button>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 btn-group" data-toggle="buttons">
-                <h3>标签</h3>
-                <label class="tag btn btn-sm" ng-class="'btn-' + tag.className" ng-repeat="tag in tags">
-                    <input type="checkbox" autocomplete="off"> {{tag.tagName}}
-                </label>
+        <h3 ng-click="tagShow = !tagShow">标签</h3>
+        <div class="row" collapse="tagShow">
+            <div class="col-md-12 btn-group">
+                <label class="tag btn btn-sm btn-{{tag.className || 'default'}}" ng-repeat="tag in tags"
+                       ng-model="tagCheck[tag.id]" btn-checkbox ng-bind="tag.tagName"></label>
 
-                <button type="button" class="new btn btn-default btn-sm" >
-                    +
-                </button>
+                <button type="button" class="new btn btn-default btn-sm" ng-click="openTag()">+</button>
             </div>
         </div>
     </div>
@@ -50,7 +43,7 @@
     $(document).ready(function() {
         $('#summernote').summernote({
             lang: 'zh-CN',
-            height: 500,                 // set editor height
+            height: 300,                 // set editor height
 
             minHeight: null,             // set minimum height of editor
             maxHeight: null,             // set maximum height of editor
@@ -59,4 +52,26 @@
         });
     });
 
+</script>
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{target.title}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="名称..." ng-model="result.name">
+        </div>
+        <div class="form-group">
+            <label>选个搭配的颜色吧</label>
+        </div>
+        <div class="tag-cloud btn-group">
+            <label class="type btn btn-{{className || 'default'}}" ng-repeat="className in target.classNames"
+                   ng-model="result.className" btn-radio="'{{className}}'" style="width:40px;height:30px"></label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">添加</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+    </div>
 </script>

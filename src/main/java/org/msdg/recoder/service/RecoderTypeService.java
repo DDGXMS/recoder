@@ -2,6 +2,7 @@ package org.msdg.recoder.service;
 
 import org.msdg.recoder.dao.RecoderTypeDao;
 import org.msdg.recoder.model.RecoderType;
+import org.msdg.recoder.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +19,10 @@ public class RecoderTypeService {
 
     public List<RecoderType> allTypes(int creator) {
         return recoderTypeDao.getAllRecoderType(creator);
+    }
+    public RecoderType add(RecoderType recoderType, User user) {
+        recoderType.setCreator(user.getId());
+        recoderTypeDao.addRecoderType(recoderType);
+        return recoderType;
     }
 }

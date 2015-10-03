@@ -63,6 +63,7 @@
         <script src="/static/js/angular-route.min.js"></script>
         <script src="/static/js/angular-sanitize.min.js"></script>
         <script src="/static/js/angular-masonry-directive.js"></script>
+        <script src="/static/js/ui-bootstrap-tpls-0.13.4.min.js"></script>
         <script src="/static/js/httpConfig.js"></script>
 
         <script src="/static/front/recoder/recoderApp.js"></script>
