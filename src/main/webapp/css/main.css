@@ -36,3 +36,34 @@ body {
 span.label {
     border-radius:15px;
 }
+
+/*ng-show 加入 fadeIn 效果*/
+.ng-hide-add-active {
+    display: block!important;
+    -webkit-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+}
+
+.ng-hide-remove-active {
+    display: block!important;
+    -webkit-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+    -webkit-transition-delay: 0.5s;
+    transition-delay: 0.5s;
+}
+
+.ng-hide {
+    opacity: 0;
+}
+
+/*加入alert-default样式*/
+.alert-default {
+    background-color: white;
+    color: #928C8C;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+.alert-default a:not(.close).alert-link {
+    color: rgba(2, 166, 35, 0.71);
+    font-weight: bold;
+}

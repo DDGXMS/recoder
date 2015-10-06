@@ -1,7 +1,11 @@
-recoderApp.controller('RecoderController', function($rootScope, $scope, $http, $sce) {
+recoderApp.controller('RecoderController', function($rootScope, $scope, $http, anchorScroll) {
 
+    // 当前显示中的页码
     $scope.curPage = 1;
-    $scope.maxPage = false;
+    // 是否到了最后
+    $scope.endLoad = false;
+    // 加载中
+    $scope.loading = false;
     // 标签checkbox选中
     $scope.tagCheck = [];
 
@@ -55,7 +59,8 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, $
                     }
                 }
                 $scope.recoderList = data;
-                $scope.maxPage = false;
+                $scope.endLoad = false;
+                $scope.curPage = 1;
                 //$scope.recoderList = $scope.recoderList.concat(data);
 
                 $('.masonry-container').imagesLoaded( function () {
@@ -69,16 +74,6 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, $
                 alert(data.message);
             })
     }
-
-
-    $scope.$watch('query', function(oldValue, newValue){
-        console.log(newValue);
-        if (oldValue.keyword != newValue.keyword) {
-            return ;
-        }
-
-        $scope.queryData();
-    }, true);
 
     // 将checkbox值转成id组合的字符串
     $scope.$watchCollection('tagCheck', function () {
@@ -94,40 +89,29 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, $
         });
     });
 
+    $scope.$watch('query', function(oldValue, newValue){
+        console.log(newValue);
+        if (oldValue.keyword != newValue.keyword) {
+            return ;
+        }
 
+        $scope.queryData();
+    }, true);
 
-    $scope.queryData1 = function() {
-        $http.get("/recoder/"+$scope.query.creator+"/"+$scope.query.pageNo, {params:$scope.query})
-            .success(function(data) {
-                for (var index in data) {
-                    if (data[index].tags) {
-                        data[index]["tagList"] = data[index].tags.split(',');
-                    }
-                }
-                $scope.recoderList = $scope.recoderList.concat(data);
-
-                $('.masonry-container').imagesLoaded( function () {
-                    $('.masonry-container').masonry({
-                        columnWidth: '.tile',
-                        itemSelector: '.tile'
-                    });
-                });
-            })
-            .error(function(data) {
-                alert(data.message);
-            })
-    }
 
 
     // 滚动到底部加载
     $(window).scroll(function () {
-        if (!$scope.maxPage && ($(document).scrollTop() + $(window).height() >= $(document).height())) {
+        if (!$scope.endLoad && !$scope.loading && ($(document).scrollTop() + $(window).height() >= $(document).height())) {
             $scope.queryScroll = $.extend({}, $scope.query);
             $scope.queryScroll.pageNo = $scope.curPage + 1;
+            $scope.loading = true;
+            console.log("safsdf");
             $http.get("/recoder/"+$scope.queryScroll.creator+"/"+$scope.queryScroll.pageNo, {params:$scope.queryScroll})
                 .success(function(data) {
+                    $scope.loading = false;
                     if (!data || data.length == 0) {
-                        $scope.maxPage = true;
+                        $scope.endLoad = true;
                     } else {
                         for (var index in data) {
                             if (data[index].tags) {
@@ -147,8 +131,14 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, $
                     }
                 })
                 .error(function(data) {
+                    $scope.loading = false;
                     alert(data.message);
                 })
         }
     });
+
+
+    $scope.turnTop = function() {
+        anchorScroll.toView('#top', true, 80);
+    }
 })

@@ -1,6 +1,6 @@
 recoderApp.controller('RecoderAddController', function($scope, $http, $modal) {
 
-    $scope.classNames = ['default','primary','success','warning','danger'];
+    $scope.classNames = ['default','primary','info','success','warning','danger'];
 
     // 新增实体
     $scope.recoder = {};

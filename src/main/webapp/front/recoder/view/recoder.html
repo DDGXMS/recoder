@@ -1,19 +1,18 @@
-<div class="container">
+<div class="container" id="top">
     <div class="row">
         <div class="col-md-10">
-
-            <div class="tag-cloud well" >
+            <div class="tag-cloud well">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="搜索..." ng-model="query.keyword">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" ng-click="queryData()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                        </span>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" ng-click="queryData()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            </span>
                         </div>
                     </div>
                 </div>
-                <div class="row "  style="margin-top:10px;">
+                <div class="row " style="margin-top:10px;">
                     <div class="col-md-12 btn-group">
                         <label class="tag btn btn-sm btn-{{tag.className || 'default'}}" ng-repeat="tag in tags"
                                ng-model="tagCheck[tag.id]" btn-checkbox ng-bind="tag.tagName"></label>
@@ -39,10 +38,16 @@
                     </div>
                 </div>
             </div>
+            <div class="alert alert-default text-center" ng-show="endLoad">
+                已经到底啦～
+                <a href="javascript:void(0)" class="alert-link" ng-click="turnTop()">返回顶部</a>
+            </div>
+            <div class="alert alert-default text-center" ng-show="loading">
+                努力加载中...
+            </div>
         </div>
         <div class="col-md-2">
             <a href="/recoder/add" class="btn btn-success btn-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-            <button class="btn btn-success btn-block" ng-click="queryData1()">模拟滚动添加</button>
             <div class="row">
                 <div class="col-md-12 tag-cloud">
                     <h3 ng-click="typeShow = !typeShow">分类</h3>
