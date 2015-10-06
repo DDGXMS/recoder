@@ -21,8 +21,8 @@
             AND recoderType = #{recoderType}
         </if>
         <if test="tags != null">
-            <foreach collection="tags" index="index" item="tag" open="AND">
-                LOCATE(#{tag},tags)
+            <foreach collection="tags" index="index" item="tag">
+                AND LOCATE(#{tag},tags)
             </foreach>
         </if>
         <if test="keyword != ''">

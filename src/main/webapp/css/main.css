@@ -21,6 +21,9 @@ body {
 .tag-cloud>.row>.btn-group>.tag:not(:last-child):not(.dropdown-toggle) {
     border-radius: 15px;
 }
+.tag-cloud>.row>.btn-group>.tag:last-child:not(:first-child):not(.dropdown-toggle) {
+    border-radius: 15px;
+}
 
 .tag-cloud .new:last-child:not(:first-child){
     border-radius: 4px;
@@ -28,4 +31,8 @@ body {
 
 .tag-cloud .type {
     border-radius: 0;
+}
+
+span.label {
+    border-radius:15px;
 }
