@@ -30,9 +30,9 @@ public class RecoderController extends BaseController{
     @RequestMapping(value = "/{creator}/{pageNo}", method = RequestMethod.GET)
     public List<Recoder> recoderPage(@PathVariable int creator, @PathVariable int pageNo,
                                      @RequestParam(required = false) String keyword,
-                                     @RequestParam(required = false) String type,
+                                     @RequestParam(required = false) String recoderType,
                                      @RequestParam(required = false) String tags) {
-        return recoderService.recoderPage(pageNo, creator, keyword, tags, type);
+        return recoderService.recoderPage(pageNo, creator, keyword, tags, recoderType);
     }
 
     @ResponseBody

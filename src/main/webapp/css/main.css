@@ -16,13 +16,13 @@ body {
 }
 
 .tag-cloud .tag:not(:first-child):not(:last-child):not(.dropdown-toggle) {
-    border-radius: 15px;
+    border-radius: 12px;
 }
 .tag-cloud>.row>.btn-group>.tag:not(:last-child):not(.dropdown-toggle) {
-    border-radius: 15px;
+    border-radius: 12px;
 }
 .tag-cloud>.row>.btn-group>.tag:last-child:not(:first-child):not(.dropdown-toggle) {
-    border-radius: 15px;
+    border-radius: 12px;
 }
 
 .tag-cloud .new:last-child:not(:first-child){
@@ -34,7 +34,7 @@ body {
 }
 
 span.label {
-    border-radius:15px;
+    border-radius:12px;
 }
 
 /*ng-show 加入 fadeIn 效果*/
@@ -66,4 +66,8 @@ span.label {
 .alert-default a:not(.close).alert-link {
     color: rgba(2, 166, 35, 0.71);
     font-weight: bold;
+}
+
+.panel-footer {
+    overflow: hidden;
 }

@@ -1,7 +1,6 @@
 recoderApp.controller('RecoderAddController', function($scope, $http, $modal) {
 
     $scope.classNames = ['default','primary','info','success','warning','danger'];
-
     // 新增实体
     $scope.recoder = {};
     // 标签checkbox选中
@@ -37,10 +36,18 @@ recoderApp.controller('RecoderAddController', function($scope, $http, $modal) {
     }
 
     $scope.init();
+    //
+    //$scope.$watch('recoder', function() {
+    //    console.log($scope.recoder);
+    //}, true);
 
     // 新增一个碎念
     $scope.add = function() {
         $scope.recoder.content = $('#summernote').code();
+        // 自动获得标题
+        if (!$scope.recoder.title) {
+            $scope.recoder.title = $scope.recoder.content.replace(/<[^>]+>/g,"").substr(0,20);
+        }
         $http.post("/recoder/add", $scope.recoder)
             .success(function(data){
                 window.location.href = "/recoder";
@@ -100,11 +107,6 @@ recoderApp.controller('RecoderAddController', function($scope, $http, $modal) {
             })
     }
 
-    // 监控model的值，调试用
-    $scope.$watch('recoder', function() {
-        console.debug($scope.recoder);
-    },true);
-
     // 将checkbox值转成id组合的字符串
     $scope.$watchCollection('tagCheck', function () {
         $scope.recoder.tags = '';
@@ -144,6 +146,8 @@ recoderApp.controller('RecoderAddController', function($scope, $http, $modal) {
             //console.info('Modal dismissed at: ' + new Date());
         });
     };
+
+    $(window).unbind('scroll');
 })
 
 recoderApp.controller('ModalInstanceCtrl', function ($scope, $modalInstance, target) {

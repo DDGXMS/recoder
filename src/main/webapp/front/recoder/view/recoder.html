@@ -14,6 +14,7 @@
                 </div>
                 <div class="row " style="margin-top:10px;">
                     <div class="col-md-12 btn-group">
+                        <label class="tag btn btn-sm btn-default" ng-model="tagCheck[0]" btn-checkbox>无</label>
                         <label class="tag btn btn-sm btn-{{tag.className || 'default'}}" ng-repeat="tag in tags"
                                ng-model="tagCheck[tag.id]" btn-checkbox ng-bind="tag.tagName"></label>
                     </div>
@@ -48,18 +49,16 @@
         </div>
         <div class="col-md-2">
             <a href="/recoder/add" class="btn btn-success btn-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-            <div class="row">
-                <div class="col-md-12 tag-cloud">
-                    <h3 ng-click="typeShow = !typeShow">分类</h3>
-                    <div class="row" collapse="typeShow">
-                        <div class="col-md-12 btn-group">
-                            <label class="type btn btn-{{type.className || 'default'}}" ng-repeat="type in types"
-                                   ng-model="recoder.recoderType" btn-radio="{{type.id}}" ng-bind="type.typeName"></label>
-                        </div>
-                    </div>
+            <h3 ng-click="typeShow = !typeShow">分类</h3>
+            <div class="row tag-cloud" collapse="typeShow">
+                <div class="col-md-12 btn-group">
+                    <label class="type btn btn-default" ng-model="query.recoderType" btn-radio="null">全部</label>
+                    <label class="type btn btn-{{type.className || 'default'}}" ng-repeat="type in types"
+                           ng-model="query.recoderType" btn-radio="{{type.id}}" ng-bind="type.typeName"></label>
                 </div>
             </div>
         </div>
+
     </div>
 
 </div>

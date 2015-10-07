@@ -6,14 +6,13 @@
 <div class="container">
     <form class="col-md-9">
         <div class="form-group">
-            <input type="text" class="form-control" id="titelText" placeholder="请输入标题" ng-model="recoder.title">
+            <input type="text" class="form-control" placeholder="别忘了标题..."  ng-model="recoder.title">
         </div>
         <div class="tag-cloud">
             <div class="row" style="margin-bottom: 10px;">
                 <div class="col-md-12 btn-group">
                     <label class="tag btn btn-sm btn-{{tag.className || 'default'}}" ng-repeat="tag in tags"
                            ng-model="tagCheck[tag.id]" btn-checkbox ng-bind="tag.tagName"></label>
-
                     <button type="button" class="new btn btn-default btn-sm" ng-click="openTag()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
                 </div>
             </div>
@@ -32,7 +31,6 @@
             <div class="col-md-12 btn-group">
                 <label class="type btn btn-{{type.className || 'default'}}" ng-repeat="type in types"
                        ng-model="recoder.recoderType" btn-radio="{{type.id}}" ng-bind="type.typeName"></label>
-
                 <button type="button" class="new btn btn-default" ng-click="openType()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
             </div>
         </div>

@@ -1,5 +1,6 @@
 recoderApp.controller('RecoderController', function($rootScope, $scope, $http, anchorScroll) {
 
+    $scope.scroll = true;
     // 当前显示中的页码
     $scope.curPage = 1;
     // 是否到了最后
@@ -50,7 +51,6 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, a
     };
 
     $scope.queryData = function() {
-        console.log($scope.query);
         $http.get("/recoder/"+$scope.query.creator+"/"+$scope.query.pageNo, {params:$scope.query})
             .success(function(data) {
                 for (var index in data) {
@@ -90,23 +90,21 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, a
     });
 
     $scope.$watch('query', function(oldValue, newValue){
-        console.log(newValue);
         if (oldValue.keyword != newValue.keyword) {
             return ;
         }
 
         $scope.queryData();
     }, true);
-
-
-
     // 滚动到底部加载
     $(window).scroll(function () {
         if (!$scope.endLoad && !$scope.loading && ($(document).scrollTop() + $(window).height() >= $(document).height())) {
+            // 复制当前参数
             $scope.queryScroll = $.extend({}, $scope.query);
+            // 设置滚动页码
             $scope.queryScroll.pageNo = $scope.curPage + 1;
+            // 打开加载状态
             $scope.loading = true;
-            console.log("safsdf");
             $http.get("/recoder/"+$scope.queryScroll.creator+"/"+$scope.queryScroll.pageNo, {params:$scope.queryScroll})
                 .success(function(data) {
                     $scope.loading = false;
@@ -136,7 +134,6 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, a
                 })
         }
     });
-
 
     $scope.turnTop = function() {
         anchorScroll.toView('#top', true, 80);

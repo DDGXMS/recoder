@@ -22,7 +22,12 @@
         </if>
         <if test="tags != null">
             <foreach collection="tags" index="index" item="tag">
-                AND LOCATE(#{tag},tags)
+                <if test="tag != 0">
+                    AND LOCATE(#{tag},tags)
+                </if>
+                <if test="tag == 0">
+                    AND tags = ''
+                </if>
             </foreach>
         </if>
         <if test="keyword != ''">

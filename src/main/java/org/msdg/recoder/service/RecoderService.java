@@ -1,5 +1,6 @@
 package org.msdg.recoder.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.msdg.framework.Constants;
 import org.msdg.framework.syntactic.SugarMap;
 import org.msdg.recoder.dao.RecoderDao;
@@ -25,7 +26,7 @@ public class RecoderService {
     public List<Recoder> recoderPage(int pageNo, int creator, String keyword, String tags, String type) {
         Map<String, Object> params = SugarMap.paramMap("offset", (pageNo-1)*Constants.PAGE_SIZE, "pageSize", Constants.PAGE_SIZE,
                 "creator", creator, "keyword", keyword, "recoderType", type);
-        if (null != tags) {
+        if (StringUtils.isNoneBlank(tags)) {
             String[] tagSplit = tags.split(",");
             List<String> tagList = new ArrayList<>(tagSplit.length);
             for (String tag : tagSplit) {
