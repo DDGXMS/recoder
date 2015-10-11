@@ -32,4 +32,6 @@ public interface RecoderDao {
     void updateRecoder(Recoder newRecoder);
 
     void deleteRecoder(int id);
+
+    void changeLove(int id);
 }

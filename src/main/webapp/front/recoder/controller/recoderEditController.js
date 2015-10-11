@@ -39,7 +39,7 @@ recoderApp.controller('RecoderEditController', function($scope, $http, $modal, $
     $scope.init();
 
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
-        $http.get("/recoder/" + $routeParams.id)
+        $http.get("/recoder/show/" + $routeParams.id)
             .success(function(data) {
                 if (data.tags) {
                     data["tagList"] = data.tags.split(',');
@@ -66,7 +66,7 @@ recoderApp.controller('RecoderEditController', function($scope, $http, $modal, $
         if (!$scope.recoder.title) {
             $scope.recoder.title = $scope.recoder.content.replace(/<[^>]+>/g,"").substr(0,20);
         }
-        $http.put("/recoder/edit", $scope.recoder)
+        $http.put("/recoder", $scope.recoder)
             .success(function(data){
                 $location.path('/recoder/read/' + data.id);
             })

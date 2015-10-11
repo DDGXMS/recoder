@@ -3,18 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.msdg.recoder.dao.RecoderDao">
+    <sql id="selectField">
+        id,
+        title,
+        content,
+        text,
+        love,
+        recoderType,
+        tags,
+        creator,
+        createTime,
+        lastModifyTime,
+        deleteFlag
+    </sql>
+
     <select id="getRecoderPage" parameterType="hashMap" resultType="Recoder">
         <bind name="keywordPattern" value="'%' + keyword + '%'" />
         SELECT
-          id,
-          title,
-          content,
-          recoderType,
-          tags,
-          creator,
-          createTime,
-          lastModifyTime,
-          deleteFlag
+          <include refid="selectField"/>
         FROM recoder
         WHERE deleteFlag = 0 AND creator = #{creator}
         <if test="recoderType != null">
@@ -34,31 +40,23 @@
             AND (
               title LIKE #{keywordPattern}
               OR
-              content LIKE #{keywordPattern}
+              text LIKE #{keywordPattern}
             )
         </if>
-        ORDER BY lastModifyTime DESC
+        ORDER BY love DESC, lastModifyTime DESC
         LIMIT #{offset}, #{pageSize}
     </select>
 
     <select id="getRecoder" parameterType="int" resultType="Recoder">
         SELECT
-          id,
-          title,
-          content,
-          recoderType,
-          tags,
-          creator,
-          createTime,
-          lastModifyTime,
-          deleteFlag
+          <include refid="selectField"/>
         FROM recoder
         WHERE id = #{value}
     </select>
 
     <insert id="addRecoder" useGeneratedKeys="true" keyProperty="id" parameterType="hashMap">
-        INSERT INTO recoder(title, content, recoderType, tags, creator, createTime, lastModifyTime)
-        VALUES (#{title}, #{content}, #{recoderType}, #{tags}, #{creator}, NOW(), NOW())
+        INSERT INTO recoder(title, content, text, love, recoderType, tags, creator, createTime, lastModifyTime)
+        VALUES (#{title}, #{content}, #{text}, #{love}, #{recoderType}, #{tags}, #{creator}, NOW(), NOW())
     </insert>
 
     <update id="updateRecoder" parameterType="hashMap">
@@ -70,6 +68,12 @@
         </if>
         <if test="content != null">
             , content = #{content}
+        </if>
+        <if test="text != null">
+            , text = #{text}
+        </if>
+        <if test="love != null">
+            , love = #{love}
         </if>
         <if test="recoderType != null">
             , recoderType = #{recoderType}
@@ -84,5 +88,11 @@
       UPDATE recoder
       SET deleteFlag = 1
       WHERE id = #{value}
+    </update>
+
+    <update id="changeLove" parameterType="int">
+        UPDATE recoder
+        SET love = NOT love, lastModifyTime = NOW()
+        WHERE id=#{value}
     </update>
 </mapper>

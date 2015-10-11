@@ -6,7 +6,12 @@
 <div class="container" ng-cloak>
     <form class="col-md-9">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="别忘了标题..."  ng-model="recoder.title">
+            <div class="input-group">
+                <span class="input-group-addon" ng-class="{'true':'input-group-addon-love'}[recoder.love]" ng-click="recoder.love = !recoder.love">
+                    <span class="glyphicon" ng-class="{'true':'glyphicon-heart', 'false':'glyphicon-heart-empty'}[recoder.love]" aria-hidden="true"></span>
+                </span>
+                <input type="text" class="form-control" placeholder="别忘了标题..."  ng-model="recoder.title">
+            </div>
         </div>
         <div class="tag-cloud">
             <div class="row" style="margin-bottom: 10px;">
@@ -32,11 +37,6 @@
                 <label class="type btn btn-{{type.className || 'default'}}" ng-repeat="type in types"
                        ng-model="$parent.recoder.recoderType" btn-radio="{{type.id}}" ng-bind="type.typeName"></label>
                 <button type="button" class="new btn btn-default" ng-click="openType()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-            </div>
-            <div class="btn-group">
-                <label class="btn btn-primary" ng-model="recoder.recoderType" btn-radio="2">Left</label>
-                <label class="btn btn-primary" ng-model="recoder.recoderType" btn-radio="5">Middle</label>
-                <label class="btn btn-primary" ng-model="recoder.recoderType" btn-radio="1">Right</label>
             </div>
         </div>
     </div>
@@ -76,7 +76,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="ok()">添加</button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+        <button class="btn btn-success" type="button" ng-click="ok()">新增</button>
     </div>
 </script>

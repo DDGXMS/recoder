@@ -2,7 +2,9 @@ recoderApp.controller('RecoderAddController', function($scope, $http, $modal, $l
 
     $scope.classNames = ['default','primary','info','success','warning','danger'];
     // 新增实体
-    $scope.recoder = {};
+    $scope.recoder = {
+        love: false
+    };
     // 标签checkbox选中
     $scope.tagCheck = [];
 
@@ -48,7 +50,7 @@ recoderApp.controller('RecoderAddController', function($scope, $http, $modal, $l
         if (!$scope.recoder.title) {
             $scope.recoder.title = $scope.recoder.content.replace(/<[^>]+>/g,"").substr(0,20);
         }
-        $http.post("/recoder/add", $scope.recoder)
+        $http.post("/recoder", $scope.recoder)
             .success(function(data){
                 $location.path('/recoder/read/' + data.id);
             })

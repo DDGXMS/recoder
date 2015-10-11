@@ -11,7 +11,12 @@ public class Recoder {
 
     private int id;
     private String title;
+    /**内容，有格式*/
     private String content;
+    /**内容，无格式*/
+    private String text;
+    /**爱心标记*/
+    private boolean love;
     private int recoderType;
     private String tags;
     private int creator;
@@ -91,5 +96,21 @@ public class Recoder {
 
     public void setDeleteFlag(int deleteFlag) {
         this.deleteFlag = deleteFlag;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public boolean isLove() {
+        return love;
+    }
+
+    public void setLove(boolean love) {
+        this.love = love;
     }
 }

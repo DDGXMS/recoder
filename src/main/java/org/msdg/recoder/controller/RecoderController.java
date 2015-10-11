@@ -46,13 +46,13 @@ public class RecoderController extends BaseController{
     }
 
     @ResponseBody
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
     public Recoder getRecoder(@PathVariable int id) {
         return recoderService.getRecoder(id);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public Recoder add(HttpServletRequest request, @ModelAttribute Recoder recoder) {
         User user = super.getSessionUser(request);
         return recoderService.add(recoder, user);
@@ -65,9 +65,18 @@ public class RecoderController extends BaseController{
     }
 
     @ResponseBody
-    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public Recoder update(@ModelAttribute Recoder recoder) {
         recoderService.update(recoder);
         return recoderService.getRecoder(recoder.getId());
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/love/{id}", method = RequestMethod.PUT)
+    public Recoder changeLove(@PathVariable int id) {
+        recoderService.changeLove(id);
+        return recoderService.getRecoder(id);
+    }
+
+
 }

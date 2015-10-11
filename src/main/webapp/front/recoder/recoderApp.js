@@ -23,6 +23,17 @@ recoderApp.filter('trustHtml', function ($sce) {
     }
 });
 
+recoderApp.filter('limitLength', function () {
+    return function (input) {
+        var len = 10;
+        if (input.length > len) {
+            return input.substr(0, len) + '...';
+        } else {
+            return input;
+        }
+    }
+});
+
 /**
  * service
  */

@@ -24,14 +24,15 @@
                 <div class="col-md-3 tile" masonry-tile ng-repeat="recoder in recoderList">
                     <div class="note note-{{typeMap[recoder.recoderType].className || 'default'}}">
                         <div class="note-heading" ng-click="showDetail($index)">
-                            <h4 class="note-title">{{recoder.title}}<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></h4>
+                            <h4 class="note-title">{{recoder.title | limitLength}}<span class="glyphicon glyphicon-heart" aria-hidden="true" ng-show="recoder.love" ></span></h4>
                         </div>
-                        <div class="note-body" ng-bind-html="recoder.content | trustHtml">
+                        <div class="note-body">
+                            <p ng-bind-html="recoder.text | trustHtml"></p>
                         </div>
                         <div class="note-footer">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label>{{recoder.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</label>
+                                    <label>{{recoder.lastModifyTime | date:'yyyy-MM-dd HH:mm:ss'}}</label>
                                 </div>
                             </div>
                             <span class="mr5 label" ng-class="'label-' + tagMap[tagId].className" ng-repeat="tagId in recoder.tagList">{{tagMap[tagId].tagName}}</span>

@@ -28,7 +28,7 @@ recoderApp.controller('RecoderDetailController', function($routeParams, $scope, 
                 alert(data.message);
             })
 
-        $http.get("/recoder/" + $routeParams.id)
+        $http.get("/recoder/show/" + $routeParams.id)
             .success(function(data) {
                 if (data.tags) {
                     data["tagList"] = data.tags.split(',');
@@ -42,6 +42,22 @@ recoderApp.controller('RecoderDetailController', function($routeParams, $scope, 
 
     $scope.init();
     $(window).unbind('scroll');
+
+    // 返回列表页
+    $scope.back = function() {
+        $location.path('/recoder');
+    }
+
+    // 标记或取消爱心
+    $scope.love = function() {
+        $http.put('/recoder/love/' + $scope.recoder.id)
+            .success(function(data) {
+                $scope.recoder.love = data.love;
+            })
+            .error(function(data) {
+                alert(data.message);
+            })
+    }
 
     // 删除
     $scope.deleteRecoder = function() {

@@ -103,3 +103,20 @@ span.label {
 .recoder-foot {
 
 }
+
+.input-group-addon {
+    border: 0 solid #2196f3;
+    border-radius: 0;
+    box-shadow: inset 0 -1px 0 #ddd;
+}
+.input-group-addon:hover {
+    color: #080808;
+    box-shadow: inset 0 -2px 0 #cdcdcd;
+    cursor: pointer;
+}
+.input-group-addon-love {
+    box-shadow: inset 0 -2px 0 #2196f3;
+}
+.input-group-addon-love:hover {
+    box-shadow: inset 0 -2px 0 #2684d9;
+}
