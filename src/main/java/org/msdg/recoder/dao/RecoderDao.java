@@ -25,6 +25,8 @@ public interface RecoderDao {
      */
     List<Recoder> getRecoderPage(Map<String, Object> parmas);
 
+    Recoder getRecoder(int id);
+
     void addRecoder(Recoder recoder);
 
     void updateRecoder(Recoder newRecoder);

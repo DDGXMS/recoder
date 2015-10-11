@@ -1,0 +1,82 @@
+<style>
+    .h3 {
+        margin-top:0px;
+    }
+</style>
+<div class="container" ng-cloak>
+    <form class="col-md-9">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="别忘了标题..."  ng-model="recoder.title">
+        </div>
+        <div class="tag-cloud">
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-12 btn-group">
+                    <label class="tag btn btn-sm btn-{{tag.className || 'default'}}" ng-repeat="tag in tags" on-finish-render-filters
+                           ng-model="$parent.tagCheck[tag.id]" btn-checkbox ng-bind="tag.tagName"></label>
+                    <button type="button" class="new btn btn-default btn-sm" ng-click="openTag()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div id="summernote"></div>
+        </div>
+        <button class="btn btn-warning" type="button" ng-click="edit()">修改</button>
+        <a class="btn btn-default" type="button" href="/recoder">取消</a>
+    </form>
+
+    <div class="col-md-3 tag-cloud">
+        <h3 ng-click="typeShow = !typeShow">分类</h3>
+        <div class="row" collapse="typeShow">
+            <div class="col-md-12 btn-group">
+                <label class="type btn btn-{{type.className || 'default'}}" ng-repeat="type in types"
+                       ng-model="$parent.recoder.recoderType" btn-radio="{{type.id}}" ng-bind="type.typeName"></label>
+                <button type="button" class="new btn btn-default" ng-click="openType()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+            </div>
+            <div class="btn-group">
+                <label class="btn btn-primary" ng-model="recoder.recoderType" btn-radio="2">Left</label>
+                <label class="btn btn-primary" ng-model="recoder.recoderType" btn-radio="5">Middle</label>
+                <label class="btn btn-primary" ng-model="recoder.recoderType" btn-radio="1">Right</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/summernote.min.js"></script>
+<script src="/static/js/summernote-zh-CN.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            lang: 'zh-CN',
+            height: 300,                 // set editor height
+
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+
+            focus: true                 // set focus to editable area after initializing summernote
+        });
+    });
+
+</script>
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{target.title}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="名称..." ng-model="result.name">
+        </div>
+        <div class="form-group">
+            <label>选个搭配的颜色吧</label>
+        </div>
+        <div class="tag-cloud btn-group">
+            <label class="type btn btn-{{className || 'default'}}" ng-repeat="className in target.classNames"
+                   ng-model="result.className" btn-radio="'{{className}}'" style="width:40px;height:30px"></label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">添加</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+    </div>
+</script>

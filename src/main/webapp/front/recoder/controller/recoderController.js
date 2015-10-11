@@ -1,4 +1,4 @@
-recoderApp.controller('RecoderController', function($rootScope, $scope, $http, anchorScroll) {
+recoderApp.controller('RecoderController', function($rootScope, $scope, $http, $location, anchorScroll) {
 
     $scope.scroll = true;
     // 当前显示中的页码
@@ -51,7 +51,7 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, a
     };
 
     $scope.queryData = function() {
-        $http.get("/recoder/"+$scope.query.creator+"/"+$scope.query.pageNo, {params:$scope.query})
+        $http.get("/recoder/"+$scope.query.creator+"/page/"+$scope.query.pageNo, {params:$scope.query})
             .success(function(data) {
                 for (var index in data) {
                     if (data[index].tags) {
@@ -105,7 +105,7 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, a
             $scope.queryScroll.pageNo = $scope.curPage + 1;
             // 打开加载状态
             $scope.loading = true;
-            $http.get("/recoder/"+$scope.queryScroll.creator+"/"+$scope.queryScroll.pageNo, {params:$scope.queryScroll})
+            $http.get("/recoder/"+$scope.queryScroll.creator+"/page/"+$scope.queryScroll.pageNo, {params:$scope.queryScroll})
                 .success(function(data) {
                     $scope.loading = false;
                     if (!data || data.length == 0) {
@@ -137,5 +137,9 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, a
 
     $scope.turnTop = function() {
         anchorScroll.toView('#top', true, 80);
+    }
+
+    $scope.showDetail = function(index) {
+        $location.path("/recoder/read/" + $scope.recoderList[index].id);
     }
 })

@@ -71,3 +71,35 @@ span.label {
 .panel-footer {
     overflow: hidden;
 }
+
+/**recoder*/
+.recoder {
+    background-color: #ffffff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    padding: 30px;
+}
+
+.recoder-title {
+    margin-bottom: 23px;
+}
+.recoder-title legend{
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+.recoder-title legend>span {
+    margin-right: 15px;
+    font-size: 19px;
+}
+.recoder-title .btn-group {
+    float:right;
+    margin-top: 15px;
+}
+
+.recoder-body {
+    margin-top: 15px;
+    min-height: 300px;
+}
+
+.recoder-foot {
+
+}

@@ -1,5 +1,7 @@
 package org.msdg.recoder.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -13,7 +15,9 @@ public class Recoder {
     private int recoderType;
     private String tags;
     private int creator;
+    @DateTimeFormat
     private Date createTime;
+    @DateTimeFormat
     private Date lastModifyTime;
     private int deleteFlag;
 

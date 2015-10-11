@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="/static/css/summernote.css">
         <link rel="stylesheet" href="/static/css/font-awesome4.0.3.min.css">
         <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/css/note.css">
         <script>
             var loginUser = {id:'${session_user.id}', userName:'${session_user.userName}'}
         </script>
@@ -70,5 +71,7 @@
         <script src="/static/front/recoder/recoderApp.js"></script>
         <script src="/static/front/recoder/controller/recoderController.js"></script>
         <script src="/static/front/recoder/controller/recoderAddController.js"></script>
+        <script src="/static/front/recoder/controller/recoderDetailController.js"></script>
+        <script src="/static/front/recoder/controller/recoderEditController.js"></script>
     </body>
 </html>

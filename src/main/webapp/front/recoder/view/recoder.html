@@ -22,13 +22,13 @@
             </div>
             <div class="row masonry-container" masonry='{ "transitionDuration" : "0.4s" , "itemSelector" : ".tile"}'>
                 <div class="col-md-3 tile" masonry-tile ng-repeat="recoder in recoderList">
-                    <div class="panel panel-{{typeMap[recoder.recoderType].className || 'default'}}">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">{{recoder.title}}<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></h4>
+                    <div class="note note-{{typeMap[recoder.recoderType].className || 'default'}}">
+                        <div class="note-heading" ng-click="showDetail($index)">
+                            <h4 class="note-title">{{recoder.title}}<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></h4>
                         </div>
-                        <div class="panel-body" style="overflow: hidden;" ng-bind-html="recoder.content | trustHtml">
+                        <div class="note-body" ng-bind-html="recoder.content | trustHtml">
                         </div>
-                        <div class="panel-footer">
+                        <div class="note-footer">
                             <div class="row">
                                 <div class="col-md-12">
                                     <label>{{recoder.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</label>

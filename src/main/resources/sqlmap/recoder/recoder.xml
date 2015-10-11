@@ -41,6 +41,21 @@
         LIMIT #{offset}, #{pageSize}
     </select>
 
+    <select id="getRecoder" parameterType="int" resultType="Recoder">
+        SELECT
+          id,
+          title,
+          content,
+          recoderType,
+          tags,
+          creator,
+          createTime,
+          lastModifyTime,
+          deleteFlag
+        FROM recoder
+        WHERE id = #{value}
+    </select>
+
     <insert id="addRecoder" useGeneratedKeys="true" keyProperty="id" parameterType="hashMap">
         INSERT INTO recoder(title, content, recoderType, tags, creator, createTime, lastModifyTime)
         VALUES (#{title}, #{content}, #{recoderType}, #{tags}, #{creator}, NOW(), NOW())
@@ -49,7 +64,7 @@
     <update id="updateRecoder" parameterType="hashMap">
         UPDATE recoder
         SET
-          1 = 1
+          lastModifyTime = NOW()
         <if test="title != null">
            , title = #{title}
         </if>

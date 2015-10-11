@@ -37,9 +37,21 @@ public class RecoderService {
         return recoderDao.getRecoderPage(params);
     }
 
+    public Recoder getRecoder(int id) {
+        return recoderDao.getRecoder(id);
+    }
+
     public Recoder add(Recoder recoder, User user) {
         recoder.setCreator(user.getId());
         recoderDao.addRecoder(recoder);
         return recoder;
+    }
+
+    public void delete(int id) {
+        recoderDao.deleteRecoder(id);
+    }
+
+    public void update(Recoder recoder) {
+        recoderDao.updateRecoder(recoder);
     }
 }
