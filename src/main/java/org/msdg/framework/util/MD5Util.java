@@ -33,7 +33,7 @@ public class MD5Util {
     }
     
     public static void main(String[] args) {
-        System.out.println(MD5Util.MD5("syy"));
-        System.out.println(MD5Util.MD5("加密"));
+        System.out.println(MD5Util.MD5("jxp"));
+        System.out.println(MD5Util.MD5("557"));
     }
 }

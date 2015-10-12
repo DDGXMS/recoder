@@ -45,7 +45,7 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, $
     $scope.query = {
         pageNo : 1,
         keyword : '',
-        type : null,
+        recoderType : null,
         tags : null,
         creator : loginUser.id
     };

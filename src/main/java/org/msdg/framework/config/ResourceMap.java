@@ -221,7 +221,7 @@ public class ResourceMap {
 		try {
 			properties.load(new FileInputStream(file));
 		} catch (FileNotFoundException e) {
-			LOGGER.error("properties file not found");
+			LOGGER.error("properties file not found  " + file.getPath());
 		} catch (IOException e) {
 			LOGGER.error("properties file IO exception");
 		}

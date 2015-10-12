@@ -32,8 +32,6 @@ recoderApp.controller('RecoderEditController', function($scope, $http, $modal, $
             .error(function(data) {
                 alert(data.message);
             })
-
-
     }
 
     $scope.init();
@@ -73,6 +71,10 @@ recoderApp.controller('RecoderEditController', function($scope, $http, $modal, $
             .error(function(data) {
                 alert(data.message);
             })
+    }
+
+    $scope.cancel = function() {
+        $location.path('/recoder/read/' + $scope.recoder.id);
     }
 
     // 新增类型
