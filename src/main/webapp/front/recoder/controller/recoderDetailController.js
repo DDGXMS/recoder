@@ -99,8 +99,4 @@ recoderApp.controller('DeleteConfirmController', function ($scope, $modalInstanc
     $scope.ok = function () {
         $modalInstance.close(true);
     };
-
-    $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-    };
 });
