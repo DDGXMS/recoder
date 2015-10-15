@@ -24,7 +24,8 @@
                 <div class="col-md-3 tile" masonry-tile ng-repeat="recoder in recoderList">
                     <div class="note note-{{typeMap[recoder.recoderType].className || 'default'}}">
                         <div class="note-heading" ng-click="showDetail($index)">
-                            <h4 class="note-title">{{recoder.title | limitLength}}<span class="glyphicon glyphicon-heart" aria-hidden="true" ng-show="recoder.love" ></span></h4>
+                            <h4 class="note-title">{{recoder.title | limitLength}}</h4>
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true" ng-show="recoder.love" ></span>
                         </div>
                         <div class="note-body">
                             <p ng-bind-html="recoder.text | trustHtml"></p>

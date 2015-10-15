@@ -36,6 +36,7 @@
     margin-bottom: 0;
     font-size: 15px;
     color: inherit;
+    display: inline;
 }
 .note-title > a,
 .note-title > small,
