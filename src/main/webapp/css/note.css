@@ -28,6 +28,11 @@
     /*transition: all 0.4s;*/
 }
 
+.note-heading span {
+    margin-top: 5px;
+    float: right;
+}
+
 .note-heading > .dropdown .dropdown-toggle {
     color: inherit;
 }

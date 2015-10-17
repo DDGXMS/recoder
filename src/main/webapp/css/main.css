@@ -120,3 +120,8 @@ span.label {
 .input-group-addon-love:hover {
     box-shadow: inset 0 -2px 0 #2684d9;
 }
+
+/*富文本编辑器默认行高1.0*/
+.note-editor {
+    line-height: 1.0;
+}
