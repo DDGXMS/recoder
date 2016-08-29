@@ -38,7 +38,7 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, $
             .error(function(data) {
                 alert(data.message);
             })
-    }
+    };
 
     $scope.init();
 
@@ -61,19 +61,11 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, $
                 $scope.recoderList = data;
                 $scope.endLoad = false;
                 $scope.curPage = 1;
-                //$scope.recoderList = $scope.recoderList.concat(data);
-
-                $('.masonry-container').imagesLoaded( function () {
-                    $('.masonry-container').masonry({
-                        columnWidth: '.tile',
-                        itemSelector: '.tile'
-                    });
-                });
             })
             .error(function(data) {
                 alert(data.message);
             })
-    }
+    };
 
     // 将checkbox值转成id组合的字符串
     $scope.$watchCollection('tagCheck', function () {
@@ -96,6 +88,11 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, $
 
         $scope.queryData();
     }, true);
+
+    $scope.$on("$destroy", function() {
+        $(window).unbind('scroll');
+    });
+
     // 滚动到底部加载
     $(window).scroll(function () {
         if (!$scope.endLoad && !$scope.loading && ($(document).scrollTop() + $(window).height() >= $(document).height())) {
@@ -118,13 +115,6 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, $
                         }
                         $scope.recoderList = $scope.recoderList.concat(data);
 
-                        $('.masonry-container').imagesLoaded( function () {
-                            $('.masonry-container').masonry({
-                                columnWidth: '.tile',
-                                itemSelector: '.tile'
-                            });
-                        });
-
                         $scope.curPage++;
                     }
                 })
@@ -137,9 +127,9 @@ recoderApp.controller('RecoderController', function($rootScope, $scope, $http, $
 
     $scope.turnTop = function() {
         anchorScroll.toView('#top', true, 80);
-    }
+    };
 
     $scope.showDetail = function(index) {
         $location.path("/recoder/read/" + $scope.recoderList[index].id);
-    }
-})
+    };
+});

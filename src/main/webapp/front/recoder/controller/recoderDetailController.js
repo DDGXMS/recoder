@@ -41,7 +41,6 @@ recoderApp.controller('RecoderDetailController', function($routeParams, $scope, 
     }
 
     $scope.init();
-    $(window).unbind('scroll');
 
     // 返回列表页
     $scope.back = function() {

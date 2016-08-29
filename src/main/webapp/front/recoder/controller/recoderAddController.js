@@ -148,9 +148,7 @@ recoderApp.controller('RecoderAddController', function($scope, $http, $modal, $l
             //console.info('Modal dismissed at: ' + new Date());
         });
     };
-
-    $(window).unbind('scroll');
-})
+});
 
 recoderApp.controller('ModalInstanceCtrl', function ($scope, $modalInstance, target) {
 

@@ -33,18 +33,24 @@
     </head>
     <body ng-cloak>
         <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
+            <div class="container-fulid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/recoder">
                         Recoder
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse">
+                <div class="collapse navbar-collapse" id="menu">
                     <ul class="nav navbar-nav">
-                        <li ng-class="{active : curTab=='recoder'}"><a href="recoder">碎片</a></li>
-                        <li ng-class="{active : curTab=='type'}"><a href="type">分类</a></li>
-                        <li ng-class="{active : curTab=='tag'}"><a href="tag">标签</a></li>
+                        <li ng-class="{active : curTab=='recoder'}"><a href="/recoder" data-toggle="collapse" data-target="#menu" aria-expanded="false">碎片</a></li>
+                        <li ng-class="{active : curTab=='type'}"><a href="/type" data-toggle="collapse" data-target="#menu" aria-expanded="false">分类</a></li>
+                        <li ng-class="{active : curTab=='tag'}"><a href="/tag" data-toggle="collapse" data-target="#menu" aria-expanded="false">标签</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">${session_user.userName}</a></li>

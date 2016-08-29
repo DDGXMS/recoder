@@ -1,4 +1,4 @@
-<div class="container" id="top">
+<div class="container-fulid cp" id="top">
     <div class="row">
         <div class="col-md-10">
             <div class="tag-cloud well">
@@ -20,8 +20,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row masonry-container" masonry='{ "transitionDuration" : "0.4s" , "itemSelector" : ".tile"}'>
-                <div class="col-md-3 tile" masonry-tile ng-repeat="recoder in recoderList">
+            <div class="row" masonry='{ "transitionDuration" : "0.4s" , "itemSelector" : ".tile"}'>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 tile" masonry-tile ng-repeat="recoder in recoderList">
                     <div class="note note-{{typeMap[recoder.recoderType].className || 'default'}}">
                         <div class="note-heading" ng-click="showDetail($index)">
                             <h4 class="note-title">{{recoder.title | limitLength}}</h4>

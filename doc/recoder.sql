@@ -28,6 +28,8 @@ CREATE TABLE `recoder` (
   `createTime` datetime NOT NULL,
   `lastModifyTime` datetime NOT NULL,
   `deleteFlag` int(1) DEFAULT '0',
+    text TEXT,
+    love TINYINT(4),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8;
 

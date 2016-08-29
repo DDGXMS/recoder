@@ -53,10 +53,6 @@ recoderApp.controller('RecoderEditController', function($scope, $http, $modal, $
             })
     });
 
-    $scope.$watch('recoder', function() {
-        console.log($scope.recoder);
-    }, true);
-
     // 修改一个碎念
     $scope.edit = function() {
         $scope.recoder.content = $('#summernote').code();
