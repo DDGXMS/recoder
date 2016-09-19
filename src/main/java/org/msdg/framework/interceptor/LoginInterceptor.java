@@ -29,23 +29,25 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         Token token = null;
         Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("token")) {
-                token = TokenMap.me().getToken(cookie.getValue());
-                break;
-            }
-        }
-
-        if (null != token && System.currentTimeMillis() - token.getTime() < over) {
-            User user = (User) request.getSession().getAttribute(Constants.SESSION_USER);
-            if (null == user) {
-                user = userService.getUser(token.getUserId());
-                request.getSession(false).setAttribute(Constants.SESSION_USER, user);
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    token = TokenMap.me().getToken(cookie.getValue());
+                    break;
+                }
             }
 
-            token.setTime(System.currentTimeMillis());
-            TokenMap.me().putToken(token);
-            return true;
+            if (null != token && System.currentTimeMillis() - token.getTime() < over) {
+                User user = (User) request.getSession().getAttribute(Constants.SESSION_USER);
+                if (null == user) {
+                    user = userService.getUser(token.getUserId());
+                    request.getSession(false).setAttribute(Constants.SESSION_USER, user);
+                }
+
+                token.setTime(System.currentTimeMillis());
+                TokenMap.me().putToken(token);
+                return true;
+            }
         }
 
         response.sendRedirect("/user");

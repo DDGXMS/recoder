@@ -31,11 +31,6 @@
             <div class="form-group">
                 <input class="form-control" type="password" placeholder="密码" ng-model="user.password" onkeydown="if(event.keyCode==13){loginBtn.click()}"/>
             </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="rememberMe" />记住我
-                </label>
-            </div>
             <button id="loginBtn" class="btn btn-primary btn-block btn-lg" type="button" ng-click="login()">登 录</button>
         </form>
 

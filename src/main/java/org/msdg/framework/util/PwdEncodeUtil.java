@@ -40,7 +40,7 @@ public class PwdEncodeUtil {
     }
 
     public static void main(String[] args) throws IllegalBlockSizeException, InvalidKeyException, BadPaddingException, NoSuchAlgorithmException, NoSuchPaddingException {
-        System.out.println(PwdEncodeUtil.encode("root"));
+        System.out.println(PwdEncodeUtil.encode("!spmq123!"));
         System.out.println(PwdEncodeUtil.decode("5a2eff87efec511e"));
     }
 }
