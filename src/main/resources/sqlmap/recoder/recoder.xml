@@ -29,7 +29,7 @@
         <if test="tags != null">
             <foreach collection="tags" index="index" item="tag">
                 <if test="tag != 0">
-                    AND LOCATE(#{tag},tags)
+                    AND LOCATE(CONCAT(#{tag}, ','),CONCAT(tags,','))>0
                 </if>
                 <if test="tag == 0">
                     AND tags = ''

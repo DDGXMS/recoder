@@ -12,6 +12,7 @@ public class User {
     private String password;
     private Date registerTime;
     private Date loginTime;
+    private String token;
 
     public int getId() {
         return id;
@@ -51,5 +52,13 @@ public class User {
 
     public void setLoginTime(Date loginTime) {
         this.loginTime = loginTime;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

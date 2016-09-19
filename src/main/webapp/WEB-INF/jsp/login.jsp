@@ -42,9 +42,9 @@
         <script src="/static/js/jquery-1.11.3.min.js"></script>
         <script src="/static/js/bootstrap.min.js"></script>
         <script src="/static/js/angular.min.js"></script>
+        <script src="/static/js/angular-cookies.min.js"></script>
         <script src="/static/js/httpConfig.js"></script>
 
-        <script src="/static/front/user/userApp.js"></script>
-        <script src="/static/front/user/controller/userController.js"></script>
+        <script src="/static/front/user/user.js"></script>
     </body>
 </html>

@@ -1,42 +1,51 @@
-<style>
-    .h3 {
-        margin-top:0px;
-    }
-</style>
-<div class="container-fulid cp" ng-cloak>
-    <form class="col-md-9">
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon" ng-class="{'true':'input-group-addon-love'}[recoder.love]" ng-click="recoder.love = !recoder.love">
-                    <span class="glyphicon" ng-class="{'true':'glyphicon-heart', 'false':'glyphicon-heart-empty'}[recoder.love]" aria-hidden="true"></span>
-                </span>
-                <input type="text" class="form-control" placeholder="别忘了标题..."  ng-model="recoder.title">
+<div class="container-fluid">
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon" ng-class="{'true':'input-group-addon-love'}[recoder.love]" ng-click="recoder.love = !recoder.love">
+                                <span class="glyphicon" ng-class="{'true':'glyphicon-heart', 'false':'glyphicon-heart-empty'}[recoder.love]" aria-hidden="true"></span>
+                            </span>
+                            <input type="text" class="form-control" placeholder="别忘了标题..."  ng-model="recoder.title">
+                        </div>
+                    </div>
+                    <div class="tag-cloud">
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-md-12 btn-group tags">
+                                <label class="tag btn btn-sm" ng-repeat="tag in tags" on-finish-render-filters
+                                       ng-model="$parent.tagCheck[tag.id]" btn-checkbox ng-bind="tag.tagName"></label>
+                                <button type="button" class="tagnew btn btn-sm" ng-click="openTag()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div id="summernote"></div>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-warning" type="button" ng-click="edit()">修改</button>
+                        <a class="btn btn-default" type="button" ng-click="cancel()">取消</a>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="tag-cloud">
-            <div class="row" style="margin-bottom: 10px;">
-                <div class="col-md-12 btn-group">
-                    <label class="tag btn btn-sm btn-{{tag.className || 'default'}}" ng-repeat="tag in tags" on-finish-render-filters
-                           ng-model="$parent.tagCheck[tag.id]" btn-checkbox ng-bind="tag.tagName"></label>
-                    <button type="button" class="new btn btn-default btn-sm" ng-click="openTag()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="type-cloud-e">
+                    <h3 ng-click="typeShow = !typeShow">分类</h3>
+                    <div class="row" collapse="typeShow">
+                        <div class="col-md-12 btn-group">
+                            <label class="btn btn-{{type.className || 'default'}}" ng-repeat="type in types"
+                                   ng-model="$parent.recoder.recoderType" btn-radio="{{type.id}}" ng-bind="type.typeName"></label>
+                            <button type="button" class="new btn btn-default" ng-click="openType()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div id="summernote"></div>
-        </div>
-        <button class="btn btn-warning" type="button" ng-click="edit()">修改</button>
-        <a class="btn btn-default" type="button" ng-click="cancel()">取消</a>
-    </form>
-
-    <div class="col-md-3 tag-cloud">
-        <h3 ng-click="typeShow = !typeShow">分类</h3>
-        <div class="row" collapse="typeShow">
-            <div class="col-md-12 btn-group">
-                <label class="type btn btn-{{type.className || 'default'}}" ng-repeat="type in types"
-                       ng-model="$parent.recoder.recoderType" btn-radio="{{type.id}}" ng-bind="type.typeName"></label>
-                <button type="button" class="new btn btn-default" ng-click="openType()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
             </div>
         </div>
     </div>
@@ -69,7 +78,7 @@
     <div class="modal-header">
         <h3 class="modal-title">{{target.title}}</h3>
     </div>
-    <div class="modal-body">
+    <div class="modal-body type-cloud-e">
         <div class="form-group">
             <input type="text" class="form-control" maxlength="25" placeholder="名称..." ng-model="result.name">
         </div>

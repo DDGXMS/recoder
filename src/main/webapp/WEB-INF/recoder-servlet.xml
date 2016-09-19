@@ -9,7 +9,7 @@
 
 	<mvc:default-servlet-handler />
 
-    <mvc:redirect-view-controller path="/" redirect-url="/user"/>
+    <mvc:redirect-view-controller path="/" redirect-url="/recoder"/>
 
     <mvc:view-resolvers>
         <mvc:jsp view-class="org.springframework.web.servlet.view.JstlView" prefix="/WEB-INF/jsp/" suffix=".jsp"/>

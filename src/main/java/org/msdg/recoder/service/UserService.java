@@ -21,6 +21,10 @@ public class UserService {
         return userDao.getUser(userName);
     }
 
+    public User getUser(int userId) {
+        return userDao.getUserById(userId);
+    }
+
     public User login(String userName, String password) {
         String encryptPwd = MD5Util.MD5(password);
 
